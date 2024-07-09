@@ -1,14 +1,14 @@
-const express = require('express'); // библиотека для создания веб-серверов на Node.js.
-const { graphqlHTTP } = require('express-graphql'); // для интеграции GraphQL с Express.
-const cors = require('cors'); // middleware для разрешения запросов из других доменов.
+const express = require('express');
+const { graphqlHTTP } = require('express-graphql');
+const cors = require('cors');
 const schema = require('./schema');
 
 const users = [
   {
     id: 1,
-    name: 'Football',
-    email: 'football@gmail.com',
+    username: 'Football',
     age: 45,
+    posts: [],
   },
 ];
 
@@ -18,8 +18,8 @@ const createUser = (input) => {
   return { id, ...input };
 };
 
-const app = express(); // Создание экземпляра Express.
-app.use(cors()); // Использование middleware CORS для разрешения запросов из других доменов.
+const app = express();
+app.use(cors());
 
 // Определение корневого резолвера для обработчиков запросов и мутаций.
 const root = {
@@ -45,5 +45,4 @@ app.use('/graphql', graphqlHTTP({
   rootValue: root, // Использование корневого резолвера для обработки запросов и мутаций.
 }));
 
-// Запуск сервера на порту 5000.
 app.listen(5000, () => console.log('Server is started on port 5000'));

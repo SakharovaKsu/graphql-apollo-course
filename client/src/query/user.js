@@ -5,7 +5,7 @@ export const GET_ALL_USERS = gql`
     getAllUsers {
       id
       username
-      email
+      age
     }
   }
 `;
@@ -15,6 +15,7 @@ export const GET_USER = gql`
     getUser(id: $id) {
       id
       username
+      age
     }
   }
 `;
