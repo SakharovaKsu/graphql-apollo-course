@@ -15,7 +15,8 @@ const schema = buildSchema(`
     content: String
     author: User
   }
-    
+  
+  # Входной тип UserInput для создания или обновления пользователя.
   input UserInput {  
     id: ID
     name: String!
@@ -24,6 +25,7 @@ const schema = buildSchema(`
     posts: [PostInput]
   }
   
+  # Входной тип для создания или обновления записи.
   input PostInput {
     id: ID!
     title: String!
@@ -31,11 +33,13 @@ const schema = buildSchema(`
     author: UserInput
   }
   
+  # Тип Query определяет доступные запросы.
   type Query {  
     getAllUsers: [User]
     getUser(id: ID!): User
   }
   
+  # Тип Mutation определяет доступные мутации.
   type Mutation { 
     createUser(input: UserInput!): User
   }
