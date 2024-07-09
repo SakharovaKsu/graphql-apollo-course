@@ -3,8 +3,7 @@ const { buildSchema } = require('graphql');
 const schema = buildSchema(`
   type User {
     id: ID
-    name: String
-    email: String
+    username: String
     age: Int
     posts: [Post]
   }
@@ -19,8 +18,7 @@ const schema = buildSchema(`
   # Входной тип UserInput для создания или обновления пользователя.
   input UserInput {  
     id: ID
-    name: String!
-    email: String
+    username: String!
     age: Int!
     posts: [PostInput]
   }
